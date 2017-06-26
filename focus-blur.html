@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        .change{
+            outline: none;
+            border: 1px solid red;
+            background-color:#fcc;
+        }
+    </style>
+    <script>
+        $(function(){
+            $('input').focus(function(){
+                $(this).addClass('change')
+            }).blur(function(){
+                $(this).removeClass('change')
+            })
+        })
+    </script>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>文本框获取焦点和失去焦点</legend>
+            <div>
+                <label for="username">名称：</label>
+                <input type="text" id="username">
+            </div>
+            <div>
+                <label for="password">密码：</label>
+                <input type="password" id="password">
+            </div>
+            <div>
+                <label for="msg">详细信息：</label>
+                <textarea id="msg"></textarea>
+            </div>
+        </fieldset>
+    </form>
+    
+</body>
+</html>
