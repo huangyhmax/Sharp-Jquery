@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+ <!--   引入jQuery -->
+<script src="js/scripts/jquery.js"></script>
+<style>
+    #test{
+        width: 400px;
+        height: 600px;
+        margin: 0 auto;
+    }
+    #choosebtn input{
+        margin: 20px;
+    }
+    .choose input{
+        width: 20px;
+        height: 20px;
+        margin-left:20px;
+        margin-top:20px;
+    }
+</style>
+<script>
+    $(function(){
+        /*全选*/
+        $('.selectall').click(function(){
+            $('.choose input').attr("checked","checked")
+        })
+        /*全不选*/
+        $('.selectno').click(function(){
+            $('.choose input').attr("checked",false)
+        })
+        /*反选*/
+        $('.select-anti').click(function(){
+            $('.choose input').each(function(){
+                // $(this).attr("checked",!$(this).attr("checked"));  /*写法一*/
+                this.checked=!this.checked;  /*写法二*/
+            })
+        })
+
+        /*反选写法三*/
+        // $('.select-anti').click(function(){
+        //     $('input:checkbox').each(function(){
+        //         if($(this).attr("checked")){
+        //             $(this).attr("checked",false)
+        //         }else{
+        //             $(this).attr("checked",true)
+        //         }
+        //     })
+        // })
+        
+
+        // var str="勾选的球类是：\r\n"
+        // $('.sumb').click(function(){
+        //     $('.choose input:checked').each(function(){
+        //         str+=$(this).val()+"\r\n";
+        //     })
+        //     alert(str)
+        // })
+
+        /*提交显示写法*/
+        var str="这是选择结果\r\n"
+        $('.sumb').click(function(){
+            $('input:checkbox:checked').each(function(){
+                str += $(this).val()+"\r\n"
+            })
+            alert(str)
+        })
+
+    })
+
+</script>
+<body>
+    <form id="test">
+        <fieldset>
+            <legend>选择你最喜欢的运动：</legend>
+            <div class="choose">
+                <input type="checkbox" name="items" value="足球">足球
+                <input type="checkbox" name="items" value="羽毛球">羽毛球
+                <input type="checkbox" name="items" value="篮球">篮球
+            </div>
+            <div id="choosebtn">
+                <input type="button" class="selectall" value="全选">
+                <input type="button" class="selectno" value="全不选">
+                <input type="button" class="select-anti" value="反选">
+                <input type="button" class="sumb" value="提交">
+            </div>
+        </fieldset>
+    </form>                                     
+</body>
+</html>
