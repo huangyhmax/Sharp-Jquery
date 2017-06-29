@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+ <!--   引入jQuery -->
+<script src="js/scripts/jquery.js"></script>
+<style>
+    #test{
+        width: 400px;
+        height: 600px;
+        margin: 0 auto;
+    }
+    #choosebtn input{
+        margin: 20px;
+    }
+    .choose input{
+        width: 20px;
+        height: 20px;
+        margin-left:20px;
+        margin-top:20px;
+    }
+</style>
+<script>
+    $(function(){
+        /*全选全不选写法1*/
+        // $('.selectallno').click(function(){
+        //     if(this.checked){
+        //         $('.choose input').attr("checked",true)
+        //     }else{
+        //         console.log(2)
+        //         $('.choose input').attr("checked",false)
+        //     }
+        // })
+
+        /*全选全不选写法2*/
+        // $('.selectallno').click(function(){
+        //     $('.choose input').attr("checked",this.checked)
+        // })
+
+        /*全选全不选写法3*/
+        $('.selectallno').click(function(){
+            var flag=this.checked;
+            $('[name=items]:checkbox').attr("checked",flag)
+        })
+
+
+        /*selectallno复选框关联$('.choose input')复选框方法1*/
+        $('.choose input').click(function(){
+            var flag=true;
+            $('.choose input').each(function(){
+                console.log(this.checked)
+                if(!this.checked){
+                    //console.log(1)
+                    flag=false;
+                }
+            })
+            $('.selectallno').attr("checked",flag)
+        })
+
+        // /*selectallno复选框关联$('.choose input')复选框方法2*/
+        // $('.choose input').click(function(){
+        //     var temp
+        //     $('.choose input').each(function(){
+        //         if(this.checked){
+        //             temp=$('.choose input:checked').length
+        //         }
+        //     })
+        //     console.log(temp)
+        //     console.log($('.choose input').length===temp)
+        //     $('.selectallno').attr("checked",$('.choose input').length===temp)
+        // })
+    })
+    
+    
+</script>
+<body>
+    <form id="test">
+        <fieldset>
+            <legend>选择你最喜欢的运动：</legend>
+            <input type="checkbox" class="selectallno" value="全选/全不选">全选/全不选</br>
+            <div class="choose">
+                
+                <input type="checkbox" name="items" value="足球">足球
+                <input type="checkbox" name="items" value="羽毛球">羽毛球
+                <input type="checkbox" name="items" value="篮球">篮球
+            </div>
+            <div id="choosebtn">
+                <input type="button" class="submit" value="提交">
+            </div>
+        </fieldset>
+    </form>                                     
+</body>
+</html>
